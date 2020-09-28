@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoplistMobile.Views.CreateItem"     
+             xmlns:vm="clr-namespace:ShoplistMobile.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:CreateItemViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <Entry Placeholder="Item" Text="{Binding Item}"></Entry>
+        <Button Text="Create" Command="{Binding CreateCommand}"></Button>    </StackLayout>
+
+</ContentPage>

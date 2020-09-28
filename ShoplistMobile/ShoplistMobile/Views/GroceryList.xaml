@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoplistMobile.Views.GroceryList"
+                          xmlns:vm="clr-namespace:ShoplistMobile.ViewModels"
+
+                          Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:GroceryListViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+        <ListView x:Name="ListView" ItemsSource="{Binding ItemList}" RowHeight="50">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                    <Grid x:Name="Item">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Large" Text="{Binding Name}"></Label>
+                        <Button BindingContext="{Binding Source={x:Reference ListView}, Path=BindingContext}" Command="{Binding DeleteItemCommand}" CommandParameter="{Binding Source={x:Reference Item},Path=BindingContext}"  Text="Delete" BackgroundColor="#E62665" Grid.Column="1"></Button>
+                    </Grid>
+
+                </ViewCell>
+            </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+ 
+
+</ContentPage>
